@@ -1,3 +1,1 @@
-import { func } from "./index";
-
-func("Hi Hi");
+const a = 1;
