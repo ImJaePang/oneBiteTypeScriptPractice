@@ -29,3 +29,48 @@ let dog:Dog = {
     color :"black",
     breed: "dwarf",
 }
+
+animal = dog;
+// dog = animal;
+// animal이 dog의 슈퍼타입, dog가 animal의 서브타입이 된 것
+
+
+
+type Book = {
+    name:string;
+    price:number
+}
+
+type ProgrammingBook = {
+    name:string;
+    price:number;
+    skill:string;
+}
+
+let book : Book;
+let programmingBook : ProgrammingBook = {
+    name : "한입 크기로 잘라먹는 리액트",
+    price: 33000,
+    skill:"reactjs",
+}
+
+
+book = programmingBook;
+// programmingBook = book; // 불가, 다운 캐스팅
+
+/* 초과 프로퍼티 검사 */
+
+let book2: Book = {
+    name : "한입 크기로 잘라먹는 리액트",
+    price: 33000,
+    // skill:"reactjs",
+}
+
+let book3:Book = programmingBook;
+
+function func(book:Book){}
+func({
+    name : "한입 크기로 잘라먹는 리액트",
+    price: 33000,
+    // skill:"reactjs",
+});
