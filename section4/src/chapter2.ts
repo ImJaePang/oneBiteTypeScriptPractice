@@ -39,8 +39,33 @@ type Dog = {
     color : string;
 }
 
-let animalFunc = (animal:Animal) => {}
-let dogFunc = (dog:Dog) => {}
+let animalFunc = (animal:Animal) => {
+    console.log(animal.name);
+}
+let dogFunc = (dog:Dog) => {
+    console.log(dog.name);
+    console.log(dog.color);
+}
 
+// animalFunc = dogFunc;
+dogFunc = animalFunc;
 
+let testFunc1 = (animal:Animal) => {
+    console.log(animal.name);
+    // console.log(animal.color);
+}
 
+let testFunc2 = (dog : Dog) => {
+    console.log(dog.name);
+}
+
+// 2-2. 매개변수의 개수가 다를때
+
+type Func1 = (a:number, b:number) => void;
+type Func2 = (a:number) => void;
+
+let func1:Func1 = (a,b) => {};
+let func2:Func2 = (a) => {};
+
+func1 = func2;
+// func2 = func1;
