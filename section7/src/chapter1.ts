@@ -35,7 +35,7 @@ let var2 = getLength("12345"); // 5
 let var3 = getLength({length : 10}); // 10
 // let var4 = getLength(10);
 
-
-
-
+function getLastValue<T> (data : [[...unknown[], T]]) {
+    return data[data.length -1];
+} 
 
