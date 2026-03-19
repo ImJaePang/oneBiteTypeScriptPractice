@@ -3,6 +3,7 @@ import Editor from "./components/Editor";
 import "./App.css";
 import { Todo } from "./types";
 import TodoItem from "./components/TodoItem";
+import _ from "lodash";
 
 type Action =
   | {
