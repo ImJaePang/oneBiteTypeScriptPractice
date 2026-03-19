@@ -4,48 +4,35 @@ import "./App.css";
 import { Todo } from "./types";
 import TodoItem from "./components/TodoItem";
 
-function App() {
-  // interface Todo {
-  //   id : number;
-  //   content : string;
-  // }
-
-  const idRef = useRef(0);
-
-  type Action = {
+type Action =
+  | {
       type: "CREATE";
       data: {
         id: number;
         content: string;
-      }
-  } | {
-      type : "DELETE";
-      id : number;
-  }
+      };
+    }
+  | {
+      type: "DELETE";
+      id: number;
+    };
 
-  function reducer(state : Todo[], action : Action) {
-    switch(action.type){
-      case  "CREATE" : {
-        return [...state, action.data]
-      }
-      case "DELETE" : {
-        return state.filter((it)=> it.id !== action.id)
-      }
+function reducer(state: Todo[], action: Action) {
+  switch (action.type) {
+    case "CREATE": {
+      return [...state, action.data];
+    }
+    case "DELETE": {
+      return state.filter((it) => it.id !== action.id);
     }
   }
+}
 
-  // const [todos, setTodos] = useState<Todo[]>([]);
+function App() {
+  const idRef = useRef(0);
   const [todos, dispatch] = useReducer(reducer, []);
 
   const onClickAdd = (text: string) => {
-    // setTodos([
-    //   ...todos,
-    //   {
-    //     id: idRef.current++,
-    //     content: text,
-    //   },
-    // ]);
-
     dispatch({
       type: "CREATE",
       data: {
@@ -56,19 +43,11 @@ function App() {
   };
 
   const onClickDelete = (id: number) => {
-    // setTodos(
-    //   [...todos].filter((todo) => todo.id !== id),
-    //   // todos.filter((todo)=> todo.id !== id)
-    // );
-
     dispatch({
-      type : "DELETE",
-      id : id,
+      type: "DELETE",
+      id: id,
     });
-
   };
-
-  // setText(123);
 
   useEffect(() => {
     console.log("todos", todos);
